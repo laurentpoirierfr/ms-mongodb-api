@@ -1,0 +1,34 @@
+services:
+  ms-mongodb-api:
+    build: .
+    image: ms-mongodb-api
+    environment:
+      - PORT=8080
+      - ENVIRONMENT=development
+      - DATABASE_URL=mongodb://mongodb:27017
+      - DATABASE_NAME=test
+      - CONNECTION_TIMEOUT=3
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/src
+    networks:
+      - ms-network    
+
+  mongodb:
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata6:/data/db
+    networks:
+      - ms-network
+
+volumes:
+  dbdata6:
+
+networks:
+  ms-network:
+    driver: bridge
