@@ -9,7 +9,7 @@ import (
 	"github.com/laurentpoirierfr/ms-mongodb-api/internal/repositories"
 	"github.com/laurentpoirierfr/ms-mongodb-api/util"
 
-	docs "github.com/laurentpoirierfr/ms-mongodb-api/docs"
+	docs "github.com/laurentpoirierfr/ms-mongodb-api/api"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )

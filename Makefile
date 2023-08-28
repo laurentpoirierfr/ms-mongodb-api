@@ -9,6 +9,6 @@ server: mongodb
 	go run ./cmd/server/main.go
 
 swagger:
-	swag init -g cmd/server/main.go
+	swag init -g cmd/server/main.go -o ./api
 	
 .PHONY: mongodb server test swagger
