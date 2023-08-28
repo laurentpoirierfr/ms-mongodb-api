@@ -57,7 +57,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "homezone.swagger.io:8080",
 	BasePath:         "/",
 	Schemes:          []string{},
-	Title:            "Swagger ms-mongodb-api",
+	Title:            "ms-mongodb-api",
 	Description:      "This is a ms-mongodb-api server.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

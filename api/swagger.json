@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "description": "This is a ms-mongodb-api server.",
-        "title": "Swagger ms-mongodb-api",
+        "title": "ms-mongodb-api",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "API Support",
