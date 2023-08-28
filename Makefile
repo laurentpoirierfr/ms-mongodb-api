@@ -5,10 +5,10 @@ test:
 mongodb:
 	docker-compose up
 
-server: mongodb
-	go run ./cmd/server/main.go
-
 swagger:
 	swag init -g cmd/server/main.go -o ./api
-	
+
+server: mongodb swagger
+	go run ./cmd/server/main.go
+
 .PHONY: mongodb server test swagger
