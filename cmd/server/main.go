@@ -14,9 +14,9 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-// @title Swagger ms-Mongodb-api
+// @title Swagger ms-mongodb-api
 // @version 1.0
-// @description This is a ms-Mongodb-api server.
+// @description This is a ms-mongodb-api server.
 // @termsOfService http://swagger.io/terms/
 
 // @contact.name API Support

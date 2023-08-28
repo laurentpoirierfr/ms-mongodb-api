@@ -5,12 +5,12 @@ info:
     email: support@swagger.io
     name: API Support
     url: http://www.swagger.io/support
-  description: This is a ms-Mongodb-api server.
+  description: This is a ms-mongodb-api server.
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/
-  title: Swagger ms-Mongodb-api
+  title: Swagger ms-mongodb-api
   version: "1.0"
 paths:
   /ops/ping:
