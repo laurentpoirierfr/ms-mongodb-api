@@ -9,7 +9,7 @@ import (
 	"github.com/laurentpoirierfr/ms-mongodb-api/internal/repositories"
 	"github.com/laurentpoirierfr/ms-mongodb-api/util"
 
-	_ "github.com/laurentpoirierfr/ms-mongodb-api/docs"
+	docs "github.com/laurentpoirierfr/ms-mongodb-api/docs"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
@@ -42,7 +42,11 @@ func main() {
 
 	router := gin.Default()
 
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+	router.GET("/swagger/*any", func(context *gin.Context) {
+		docs.SwaggerInfo.Host = context.Request.Host
+		ginSwagger.WrapHandler(swaggerfiles.Handler)(context)
+	})
+
 	router.GET("/", func(c *gin.Context) {
 		c.Redirect(http.StatusMovedPermanently, "/swagger/index.html")
 	})
