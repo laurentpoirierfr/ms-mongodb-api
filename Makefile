@@ -11,4 +11,7 @@ swagger:
 server: mongodb swagger
 	go run ./cmd/server/main.go
 
+generate:
+	go generate
+	
 .PHONY: mongodb server test swagger

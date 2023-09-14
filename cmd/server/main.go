@@ -1,7 +1,15 @@
 package main
 
+//go:generate go install golang.org/x/tools/cmd/godoc@latest
+
 import (
+	"context"
+	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gookit/slog"
@@ -67,7 +75,30 @@ func main() {
 		api.DELETE("/:documents/:id", hdls.DeleteDocument)
 	}
 
-	slog.Info("Server started.")
-	router.Run(":" + config.Port)
-	slog.Info("Server stopped.")
+	server := &http.Server{
+		Addr:    ":" + config.Port,
+		Handler: router,
+	}
+
+	go func() {
+		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			slog.Fatal("Failed to start server:", err)
+		}
+	}()
+
+	slog.Println("Server is running on port " + config.Port)
+
+	// Graceful shutdown
+	quit := make(chan os.Signal, 1)
+	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
+	<-quit
+	log.Println("Shutting down server...")
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	if err := server.Shutdown(ctx); err != nil {
+		log.Fatal("Server forced to shutdown:", err)
+	}
+	log.Println("Server gracefully stopped")
 }

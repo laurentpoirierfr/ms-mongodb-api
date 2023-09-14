@@ -22,8 +22,18 @@ func NewApiHandler(repository ports.Repository) *ApiHandler {
 	}
 }
 
-// GET /api/:Documents
-// Get all Documents
+// ListDocuments example
+//
+//	@Summary	List documents from mongodb
+//	@Tags		api
+//	@Accept		json
+//	@Produce	json
+//	@Param		documents	path		string	true	"Collection name"
+//	@Param		offset	query		int	false	"offset for search, default 0"
+//	@Param		limit	query		int	false	"offset for search, default 10"
+//	@Success	200	{array}	interface{}	"ok"
+//	@Failure	500	{object}	interface{}
+//	@Router		/api/{documents} [get]
 func (api *ApiHandler) FindDocuments(c *gin.Context) {
 	Documents := c.Param("documents")
 	offset, limit := api.getPaginationParams(c)
@@ -36,8 +46,17 @@ func (api *ApiHandler) FindDocuments(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": documents})
 }
 
-// GET /api/:Documents/:id
-// Get one Document
+// Get Document by id
+//
+//	@Summary	Get document by id from mongodb
+//	@Tags		api
+//	@Accept		json
+//	@Produce	json
+//	@Param		documents	path		string	true	"Collection name"
+//	@Param		id	path		string	true	"Document ID"
+//	@Success	200	{array}	interface{}	"ok"
+//	@Failure	500	{object}	interface{}
+//	@Router		/api/{documents}/{id} [get]
 func (api *ApiHandler) FindOneDocument(c *gin.Context) {
 	Documents := c.Param("documents")
 	id := c.Param("id")
@@ -50,8 +69,16 @@ func (api *ApiHandler) FindOneDocument(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": document})
 }
 
-// POST /api/:Documents
-// Create new Document
+// Create Document
+//
+//	@Summary	Create documents from mongodb
+//	@Tags		api
+//	@Accept		json
+//	@Produce	json
+//	@Param		documents	path		string	true	"Collection name"
+//	@Success	201	{array}	interface{}	"ok"
+//	@Failure	500	{object}	interface{}
+//	@Router		/api/{documents} [post]
 func (api *ApiHandler) CreateDocument(c *gin.Context) {
 	Documents := c.Param("documents")
 	jsonData, err := ioutil.ReadAll(c.Request.Body)
@@ -76,8 +103,17 @@ func (api *ApiHandler) CreateDocument(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": result})
 }
 
-// PUT /api/:Documents/:id
-// Update a Document
+// Put Document by id
+//
+//	@Summary	Get document by id from mongodb
+//	@Tags		api
+//	@Accept		json
+//	@Produce	json
+//	@Param		documents	path		string	true	"Collection name"
+//	@Param		id	path		string	true	"Document ID"
+//	@Success	200	{array}	interface{}	"ok"
+//	@Failure	500	{object}	interface{}
+//	@Router		/api/{documents}/{id} [put]
 func (api *ApiHandler) UpdateDocument(c *gin.Context) {
 	Documents := c.Param("documents")
 	id := c.Param("id")
@@ -103,8 +139,17 @@ func (api *ApiHandler) UpdateDocument(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": result})
 }
 
-// DELETE /api/:Documents/:id
-// Delete a Document
+// Delete a Document by id
+//
+//	@Summary	Get document by id from mongodb
+//	@Tags		api
+//	@Accept		json
+//	@Produce	json
+//	@Param		documents	path		string	true	"Collection name"
+//	@Param		id	path		string	true	"Document ID"
+//	@Success	200	{array}	interface{}	"ok"
+//	@Failure	500	{object}	interface{}
+//	@Router		/api/{documents}/{id} [delete]
 func (api *ApiHandler) DeleteDocument(c *gin.Context) {
 	Documents := c.Param("documents")
 	id := c.Param("id")

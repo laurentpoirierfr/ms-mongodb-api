@@ -13,6 +13,156 @@ info:
   title: ms-mongodb-api
   version: "1.0"
 paths:
+  /api/{documents}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Collection name
+        in: path
+        name: documents
+        required: true
+        type: string
+      - description: offset for search, default 0
+        in: query
+        name: offset
+        type: integer
+      - description: offset for search, default 10
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            items:
+              type: object
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: List documents from mongodb
+      tags:
+      - api
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Collection name
+        in: path
+        name: documents
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            items:
+              type: object
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Create documents from mongodb
+      tags:
+      - api
+  /api/{documents}/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Collection name
+        in: path
+        name: documents
+        required: true
+        type: string
+      - description: Document ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            items:
+              type: object
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get document by id from mongodb
+      tags:
+      - api
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Collection name
+        in: path
+        name: documents
+        required: true
+        type: string
+      - description: Document ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            items:
+              type: object
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get document by id from mongodb
+      tags:
+      - api
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Collection name
+        in: path
+        name: documents
+        required: true
+        type: string
+      - description: Document ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            items:
+              type: object
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get document by id from mongodb
+      tags:
+      - api
   /ops/ping:
     get:
       consumes:
