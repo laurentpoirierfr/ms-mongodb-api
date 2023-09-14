@@ -61,6 +61,7 @@ func main() {
 
 	// Check health
 	router.GET("/ops/ping", handlers.Ping)
+	router.GET("/ops/info", handlers.Info)
 
 	// Instanciate Repository
 	repo := repositories.NewMongoRepository(&config)

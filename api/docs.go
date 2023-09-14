@@ -252,6 +252,29 @@ const docTemplate = `{
                 }
             }
         },
+        "/ops/info": {
+            "get": {
+                "description": "Informations sur le service",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ops"
+                ],
+                "summary": "Info",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/domain.Info"
+                        }
+                    }
+                }
+            }
+        },
         "/ops/ping": {
             "get": {
                 "description": "do ping",
@@ -272,6 +295,22 @@ const docTemplate = `{
                             "type": "string"
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "domain.Info": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
                 }
             }
         }

@@ -1,4 +1,14 @@
 basePath: /
+definitions:
+  domain.Info:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      version:
+        type: string
+    type: object
 host: homezone.swagger.io:8080
 info:
   contact:
@@ -163,6 +173,21 @@ paths:
       summary: Get document by id from mongodb
       tags:
       - api
+  /ops/info:
+    get:
+      consumes:
+      - application/json
+      description: Informations sur le service
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Info'
+      summary: Info
+      tags:
+      - ops
   /ops/ping:
     get:
       consumes:

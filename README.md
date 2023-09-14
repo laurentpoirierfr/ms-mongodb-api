@@ -31,3 +31,8 @@ DATABASE_NAME=test
 CONNECTION_TIMEOUT=3
 ```
 
+
+
+References :
+
+* https://blog.devops.dev/make-swagger-from-your-http-rest-full-in-golang-4dc9088f5292
